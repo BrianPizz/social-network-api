@@ -54,8 +54,24 @@ router.put('/:thoughtId', async (req, res) => {
         )
 
         if (!thought) {
-            return res.status(404).json({ message: 'No user with that ID' })
+            return res.status(404).json({ message: 'No thought found with that ID' })
         }
+        res.json(thought)
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json(err);
+    }
+});
+
+// Delete a thought
+router.delete('/:thoughtId', async (req, res) => {
+    try {
+        const thought = await Thought.findOneAndDelete({ _id: req.params.thoughtId })
+
+        if (!thought) {
+            return res.status(404).json({ message: 'No thought found with that ID' })
+        }
+
         res.json(thought)
     } catch (err) {
         console.log(err);
