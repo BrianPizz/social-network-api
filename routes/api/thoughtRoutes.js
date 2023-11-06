@@ -79,4 +79,24 @@ router.delete('/:thoughtId', async (req, res) => {
     }
 });
 
+// Create thought reaction
+router.post('/:thoughtId/reactions', async (req, res) => {
+    try {
+        const thought = await Thought.findOneAndUpdate(
+            { _id: req.params.thoughtId },
+            { $addToSet: { reactions: req.body } },
+            { runValidators: true, new: true }
+        )
+
+        if (!thought) {
+            return res.status(404).json({ message: 'No thought found with that ID' })
+        }
+
+        res.json(thought)
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json(err);
+    }
+})
+
 module.exports = router;
