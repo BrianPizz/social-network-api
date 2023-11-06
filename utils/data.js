@@ -8,10 +8,6 @@ const users = [
         email: 'mar@gmail.com'
     },
     {
-        username: 'Twizzy',
-        email: 'yeat@gmail.com'
-    },
-    {
         username: 'Ken',
         email: 'x@gmail.com'
     },
@@ -19,10 +15,6 @@ const users = [
         username: 'Peyton',
         email: 'loaf@gmail.com'
     },
-    {
-        username: 'Camo',
-        email: 'hg@gmail.com'
-    }
 ]
 
 module.exports = users
