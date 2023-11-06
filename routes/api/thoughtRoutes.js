@@ -9,7 +9,7 @@ const {
     addReaction,
     removeReaction
 } = require('../../controllers/thoughtController')
-
+// routes /api/thoughts
 // Get all thoughts and create new thought
 router
     .route('/')

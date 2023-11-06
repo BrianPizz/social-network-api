@@ -9,7 +9,7 @@ const {
     addFriend,
     removeFriend
 } = require('../../controllers/userController')
-
+// routes /api/users
 // Get all users route and post new user
 router
     .route('/')
