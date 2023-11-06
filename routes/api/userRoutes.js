@@ -71,6 +71,7 @@ router.delete('/:userId', async (req, res) => {
         }
 
         // delete associated thoughts
+        const thoughts = await Thought.deleteMany( { _id: { $in: user.thoughts } } )
 
         res.json(user)
     } catch (err) {
