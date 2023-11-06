@@ -44,5 +44,23 @@ router.post('/', async (req, res) => {
     }
 });
 
+// Update a thought
+router.put('/:thoughtId', async (req, res) => {
+    try {
+        const thought = await Thought.findOneAndUpdate(
+            { _id: req.params.thoughtId },
+            { $set: req.body },
+            { runValidators: true, new: true }
+        )
+
+        if (!thought) {
+            return res.status(404).json({ message: 'No user with that ID' })
+        }
+        res.json(thought)
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json(err);
+    }
+});
 
 module.exports = router;
